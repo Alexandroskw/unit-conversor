@@ -132,8 +132,10 @@ fn internacional() {
             io::stdin().read_line(&mut e).expect("Error al leer la línea");
 
             let e: f32 = e.trim().parse().expect("Debe ser un número");
+            let c: f32;
 
             println!("Introdujiste: {e} amperes");
+            println!("{e} amperes equivale a {c} miliamperes");
         }
         5 => {
             println!("Seleccionaste temperatura"); 
