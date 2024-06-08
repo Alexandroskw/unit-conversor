@@ -35,6 +35,7 @@ fn main() {
 
 fn internacional() {
     println!("Conversor de unidades del Sistema Internacional");
+    println!("Este esn un conversor de sufijos del Sistema Internacional de Unidades");
     println!("Selecciona una unidad para trabajar");
     println!("\n1. Tiempo [s]\n2. Longitud [m]\n3. Masa [kg]\n4. Corriente eléctrica [A]\n5. Temperatura [K]\n6. Cantidad de sustancia [mol]\n7. Intensidad luminosa [cd]");
 
