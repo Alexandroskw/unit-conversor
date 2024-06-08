@@ -49,7 +49,7 @@ fn internacional() {
     match input {
         1 => {
             println!("Seleccionaste tiempo");
-            println!("Introduce un número para iniciar la conversión");
+            println!("Introduce un número para iniciar la conversión:");
 
             let mut time = String::new();
 
@@ -124,6 +124,15 @@ fn internacional() {
         }
         4 => {
             println!("Seleccionaste corriente eléctrica"); 
+            println!("Introduce un número para la conversión:");
+
+            let mut e = String::new();
+
+            io::stdin().read_line(&mut e).expect("Error al leer la línea");
+
+            let e: f32 = e.trim().parse().expect("Debe ser un número");
+
+            println!("Introdujiste: {e} amperes");
         }
         5 => {
             println!("Seleccionaste temperatura"); 
