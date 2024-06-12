@@ -199,7 +199,57 @@ fn conversions(selection: u32) {
             let m = m.trim().parse::<f32>().expect("Error al leer la línea");
             println!("Has puesto {m} metros");
 
-            println!("{} metros son {} millas", m, length::meter_to_feet(m));
+            println!("{} metros son {} pies", m, length::meter_to_feet(m));
+        }
+        2 => {
+            println!("Seleccionaste convertir de pies a metros");
+            println!("Ingresa los pies a convertir:");
+            let mut ft = String::new(); 
+            io::stdin().read_line(&mut ft).expect("Introduce un número");
+            let ft = ft.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {ft} pies");
+
+            println!("{} pies son {} metros", ft, length::feet_to_meter(ft));
+        }
+        3 => {
+            println!("Seleccionaste convertir de kilos a libras");
+            println!("Ingresa los kilos a convertir:");
+            let mut kg = String::new(); 
+            io::stdin().read_line(&mut kg).expect("Introduce un número");
+            let kg = kg.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {kg} kilogramos");
+
+            println!("{} kilogramos son {} libras", kg, weight::kg_to_pound(kg));
+        }
+        4 => {
+            println!("Seleccionaste convertir de libras a kilos");
+            println!("Ingresa las libras a convertir:");
+            let mut lb = String::new(); 
+            io::stdin().read_line(&mut lb).expect("Introduce un número");
+            let lb = lb.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {lb} kilogramos");
+
+            println!("{} libras son {} kilogramos", lb, weight::pound_to_kg(lb));
+        }
+        5 => {
+            println!("Seleccionaste convertir de grados celsius a farenheit");
+            println!("Ingresa los grados celsius a convertir:");
+            let mut c = String::new(); 
+            io::stdin().read_line(&mut c).expect("Introduce un número");
+            let c = c.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {c} grados celsius");
+
+            println!("{} celsius son {} farenheit", c, temp::c_to_f(c));
+        }
+        6 => {
+            println!("Seleccionaste convertir de grados farenheit a celsius");
+            println!("Ingresa los grados farenheit a convertir:");
+            let mut f = String::new(); 
+            io::stdin().read_line(&mut f).expect("Introduce un número");
+            let f = f.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {f} grados celsius");
+
+            println!("{} farenheit son {} celsius", f, temp::f_to_c(f));
         }
         _ => {
             println!("No es una opción válida");
