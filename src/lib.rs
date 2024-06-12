@@ -1,4 +1,4 @@
-mod length {
+pub mod length {
     pub fn meter_to_feet(meter: f32) -> f32 {
         meter * 3.28084
     }
@@ -8,7 +8,7 @@ mod length {
     }
 }
 
-mod weight {
+pub mod weight {
     pub fn kg_to_pound(kg: f32) -> f32 {
         kg * 2.20462
     }
@@ -18,7 +18,7 @@ mod weight {
     }
 }
 
-mod temp {
+pub mod temp {
     pub fn c_to_f(c: f32) -> f32 {
         c * 1.8 + 32.0
     }
