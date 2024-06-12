@@ -158,5 +158,22 @@ fn internacional() {
 fn conversor() {
     println!("Conversor de unidades");
     println!("Este es un conversor de unidades.\nSelecciona el sistema en el que quieras hacer la conversión:");
-    println!("1: Sistema Internacional\n2: Sistema Imperial");
+    println!("1: Sistema Internacional a Imperial\n2: Sistema Imperial a Internacional");
+
+    let mut o = String::new();
+    io::stdin().read_line(&mut o).expect("Introduce un número");
+    let o = o.trim().parse().expect("Error al leer la línea"); 
+
+    match o {
+        1 => {
+            println!("Has elegido la primera opción.");
+            println!("Selecciona una opción:");
+        }
+        2 => {
+            println!("Has elegido la segunda opción");
+        }
+        _ => {
+            println!("Error");
+        }
+    }
 }
