@@ -1,4 +1,5 @@
 use std::io;
+use conversor::*;
 
 fn main() {
     println!("Bienvenido al conversor de unidades");
@@ -166,14 +167,42 @@ fn conversor() {
 
     match o {
         1 => {
-            println!("Has elegido la primera opción.");
+            println!("Seleccionaste la conversión del Sistema Internacional al Imperial");
             println!("Selecciona una opción:");
+            println!("1. Convertir de metros a pies\n2. Convertir de pies a metros");
+            println!("3. Convertir de kilos a libras\n4. Convertir de libras a kilos");
+            println!("5. Convertir de Celsius a Farenheit\n6. Convertir de Farenheit a Celsius");
+            println!("7. Convertir de Celsius a Kelvin\n8. Convertir de Kelvin a Celsius");
+
+            let mut s = String::new();
+            io::stdin().read_line(&mut s).expect("Introduce un número");
+            let s = s.trim().parse::<u32>().expect("Error al leer la línea"); 
+
+            conversions(s);
         }
         2 => {
             println!("Has elegido la segunda opción");
         }
         _ => {
             println!("Error");
+        }
+    }
+}
+
+fn conversions(selection: u32) {
+    match selection {
+        1 => {
+            println!("Seleccionaste convertir de metros a pies");
+            println!("Ingresa los metros a convertir:");
+            let mut m = String::new();
+            io::stdin().read_line(&mut m).expect("Introduce un número");
+            let m = m.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {m} metros");
+
+            println!("{} metros son {} millas", m, length::meter_to_feet(m));
+        }
+        _ => {
+            println!("No es una opción válida");
         }
     }
 }
