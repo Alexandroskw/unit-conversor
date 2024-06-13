@@ -262,8 +262,8 @@ fn conversions(selection: u32) {
     }
 }
 
-fn read_in() -> Result<f32, std::num::ParseFloatError> {
+fn read_in() -> Result<f32, std::io::Error> {
     let mut input = String::new();
-    io::stdin().read_line(&mut input);
-    input.trim().parse()
+    io::stdin().read_line(&mut input)?;
+    input.trim().parse().map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
 }
