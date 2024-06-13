@@ -7,29 +7,14 @@ fn main() {
     println!("'1' para hacer una conversión de  múltiplos en el S.I.\n'2' para hacer una conversión en cualquiera de ambos sistemas (Internacional, Imperial):");
 
     loop {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Error al leer la línea");
-        let input = match input.trim().parse::<u32>() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Introduce un número");
-                continue;
-            }
-        };
-
-        match input {
-            1 => {
-                internacional();
-                break;
-            }
-            2 => {
-                conversor();
-                break;
-            }
-            _ => {
-                println!("No es una opción válida");
-            } 
-        }
+       match read_in().unwrap_or_else(|_| { 
+            println!("Introduce una opción");
+            0.0
+       }) {
+           1.0 => internacional(),
+           2.0 => conversor(),
+           _ => println!("No es una opción válida"),
+       }
     }
 }
 
@@ -247,12 +232,38 @@ fn conversions(selection: u32) {
             let mut f = String::new(); 
             io::stdin().read_line(&mut f).expect("Introduce un número");
             let f = f.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {f} grados celsius");
+            println!("Has puesto {f} grados farenheit");
 
             println!("{} farenheit son {} celsius", f, temp::f_to_c(f));
+        }
+        7 => {
+            println!("Seleccionaste convertir de grados celsius a kelvin");
+            println!("Ingresa los grados celsius a convertir:");
+            let mut c = String::new(); 
+            io::stdin().read_line(&mut c).expect("Introduce un número");
+            let c = c.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {c} grados celsius");
+
+            println!("{} celsius son {} kelvin", c, temp::c_to_k(c));
+        }
+        8 => {
+            println!("Seleccionaste convertir de grados kelvin a celsius");
+            println!("Ingresa los grados kelvin a convertir:");
+            let mut k = String::new(); 
+            io::stdin().read_line(&mut k).expect("Introduce un número");
+            let k = k.trim().parse::<f32>().expect("Error al leer la línea");
+            println!("Has puesto {k} grados celsius");
+
+            println!("{} kelvin son {} celsius", k, temp::k_to_c(k));
         }
         _ => {
             println!("No es una opción válida");
         }
     }
+}
+
+fn read_in() -> Result<f32, std::num::ParseFloatError> {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input);
+    input.trim().parse()
 }
