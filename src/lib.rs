@@ -81,3 +81,31 @@ pub mod longitud {
         m * 1000_000_000.0
     }
 }
+
+pub mod mass {
+    const FACTOR: f32 = 1_000.0;
+
+    pub fn g_to_kg(g: f32) -> f32 {
+        g / FACTOR
+    }
+
+    pub fn g_to_cg(g: f32) -> f32 {
+        g * 100.0
+    }
+
+    pub fn g_to_mg(g: f32) -> f32 {
+        g * 1_000.0
+    }
+
+    pub fn g_to_dg(g: f32) -> f32 {
+        g * 10.0
+    }
+
+    pub fn g_to_mg(g: f32) -> f32 {
+        g * 1_000_000.0
+    }
+
+    pub fn g_to_ng(g: f32) -> f32 {
+        g * 1000_000_000.0
+    }
+}
