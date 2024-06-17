@@ -101,7 +101,7 @@ pub mod mass {
         g * 10.0
     }
 
-    pub fn g_to_mg(g: f32) -> f32 {
+    pub fn g_to_ug(g: f32) -> f32 {
         g * 1_000_000.0
     }
 
