@@ -4,16 +4,25 @@ use conversor::*;
 fn main() {
     println!("Bienvenido al conversor de unidades");
     println!("¿Qué deseas hacer?:");
-    println!("'1' para hacer una conversión de  múltiplos en el S.I.\n'2' para hacer una conversión en cualquiera de ambos sistemas (Internacional, Imperial):");
+    println!("1. Para hacer una conversión de  múltiplos en el S.I.\n2. Para hacer una conversión en cualquiera de ambos sistemas (Internacional, Imperial):");
 
     loop {
        match read_in().unwrap_or_else(|_| { 
             println!("Introduce una opción");
-            0.0
+            0
        }) {
-           1.0 => internacional(),
-           2.0 => conversor(),
-           _ => println!("No es una opción válida"),
+           1 => {
+               internacional();
+               break;
+           }
+           2 => {
+               conversor();
+               break;
+           }
+           _ => {
+               println!("No es una opción válida");
+               break;
+           }
        }
     }
 }
@@ -32,7 +41,7 @@ fn internacional() {
             Ok(num) => num,
             Err(_) => {
                 println!("Introduce un número");
-                continue;
+                break;
             }
         };
 
@@ -57,6 +66,8 @@ fn internacional() {
                 println!("{time} segundos equivale a {c1} horas", c1 = (time*1.0000)/3600.0000);
                 println!("{time} segundos equivale a {c2} milisegundos", c2 = (time*1000.0000)/1.0000);
                 println!("{time} segundos equivale a {c3} microsegundos", c3 = (time*1000000.0000)/1.0000);
+
+                break;
             }
             2 => {
                 println!("Seleccionaste longitud");
@@ -262,7 +273,7 @@ fn conversions(selection: u32) {
     }
 }
 
-fn read_in() -> Result<f32, std::io::Error> {
+fn read_in() -> Result<u32, std::io::Error> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
     input.trim().parse().map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
