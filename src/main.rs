@@ -96,20 +96,13 @@ fn internacional() {
 
             let mass: f32 = mass.trim().parse().expect("Debe ser un número");
 
-            let c: f32;
-            let c1: f32;
-            let c2: f32;
-            let c3: f32;
-            let c4: f64;
-            let c5: f64;
-
             println!("Introdujiste: {mass} gramos");
-            println!("{mass} gramos equivale a {c} kilogramos", c = mass/1000.0000);
-            println!("{mass} gramos equivale a {c1} centigramos", c1 =(mass*1000.0000)/10.0000);
-            println!("{mass} gramos equivale a {c2} miligramos", c2 =(mass*1000.0000)/1.0000);
-            println!("{mass} gramos equivale a {c3} decigramos", c3 =(mass*1000.0000)/100.0000);
-            println!("{mass} gramos equivale a {c4} microgramos", c4 = mass*1_000_000.0);
-            println!("{mass} gramos equivale a {c5} nanogramos", c5 = mass*1000_000_000.0);
+            println!("{} gramos equivale a {} kilogramos",mass, mass::g_to_kg(mass));
+            println!("{} gramos equivale a {} centigramos",mass, mass::g_to_cg(mass));
+            println!("{} gramos equivale a {} miligramos",mass, mass::g_to_mg(mass));
+            println!("{} gramos equivale a {} decigramos",mass, mass::g_to_dg(mass));
+            println!("{} gramos equivale a {} microgramos",mass, mass::g_to_ug(mass));
+            println!("{} gramos equivale a {} nanogramos",mass, mass::g_to_ng(mass));
 
             break;
         }
