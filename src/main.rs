@@ -52,6 +52,9 @@ fn internacional() {
 
                 println!("Introdujiste: {time}");
                 println!("{} segundos son {} minutos", time, tiempo::seg_to_min(time));
+                println!("{} segundos son {} horas", time, tiempo::seg_to_hr(time));
+                println!("{} segundos son {} milisegundos", time, tiempo::seg_to_ms(time));
+                println!("{} segundos son {} microsegundos", time, tiempo::seg_to_us(time));
 
                 break;
         }
@@ -67,20 +70,9 @@ fn internacional() {
 
             let long: f32 = long.trim().parse().expect("Debe ser un número");
 
-            let c: f32;
-            let c1: f32;
-            let c2: f32;
-            let c3: f32;
-            let c4: f32;
-            let c5: f32;
-
             println!("Introdujiste: {long} metros");
-            println!("{long} metros equivale a {c} kilometros", c = long/1000.0000);
-            println!("{long} metros equivale a {c1} centímetros", c1 = (long*1000.0000)/10.0000);
-            println!("{long} metros equivale a {c2} milímetros", c2 = (long*1000.0000)/1.0000);
-            println!("{long} metros equivale a {c3} decímetros", c3 = (long*1000.0000)/100.0000);
-            println!("{long} metros equivale a {c4} micrómetros", c4 = long*1_000_000.0);
-            println!("{long} metros equivale a {c5} nanómetros", c5 = long*1000_000_000.0);
+            println!("{} metros equivale a {}", long, longitud::m_to_km(long));
+            
         }
         3 => {
             println!("Seleccionaste masa");
