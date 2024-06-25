@@ -39,96 +39,93 @@ fn internacional() {
             println!("Introduce un número");
             0
             }) {
-            1 => {
-                // Sección para submúltiplos de tiempo
-                println!("Seleccionaste tiempo");
-                println!("Introduce un número para iniciar la conversión:");
+                1 => {
+                    // Sección para submúltiplos de tiempo
+                    println!("Seleccionaste tiempo");
+                    println!("Introduce un número para iniciar la conversión:");
 
-                let mut time = String::new();
+                    let mut time = String::new();
+
+                    io::stdin()
+                        .read_line(&mut time)
+                        .expect("Error al leer la línea");
+
+                    let time: f32 = time.trim().parse().expect("Debe ser un número");
+
+                    println!("Introdujiste: {time}");
+                    println!("{} segundos son {} minutos", time, tiempo::seg_to_min(time));
+                    println!("{} segundos son {} horas", time, tiempo::seg_to_hr(time));
+                    println!("{} segundos son {} milisegundos", time, tiempo::seg_to_ms(time));
+                    println!("{} segundos son {} microsegundos", time, tiempo::seg_to_us(time));
+
+                    break;
+                }
+            2 => {
+                // Sección para submúltiplos de longitud
+                println!("Seleccionaste longitud");
+                println!("Indroduce un número para iniciar la conversión");
+
+                let mut long = String::new();
 
                 io::stdin()
-                    .read_line(&mut time)
+                    .read_line(&mut long)
                     .expect("Error al leer la línea");
 
-                let time: f32 = time.trim().parse().expect("Debe ser un número");
+                let long: f32 = long.trim().parse().expect("Debe ser un número");
 
-                println!("Introdujiste: {time}");
-                println!("{} segundos son {} minutos", time, tiempo::seg_to_min(time));
-                println!("{} segundos son {} horas", time, tiempo::seg_to_hr(time));
-                println!("{} segundos son {} milisegundos", time, tiempo::seg_to_ms(time));
-                println!("{} segundos son {} microsegundos", time, tiempo::seg_to_us(time));
+                println!("Introdujiste: {long} metros");
+                println!("{} metros equivale a {} kilómetros", long, longitud::m_to_km(long));
+                println!("{} metros equivale a {} centímetros", long, longitud::m_to_cm(long));
+                println!("{} metros equivale a {} milímetros", long, longitud::m_to_mm(long));
+                println!("{} metros equivale a {} decímetros", long, longitud::m_to_dm(long));
+                println!("{} metros equivale a {} micrometros", long, longitud::m_to_um(long));
+                println!("{} metros equivale a {} nanometros", long, longitud::m_to_nm(long));
+                
+                break;
+            }
+            3 => {
+                // Sección para submúltiplos de masa
+                println!("Seleccionaste masa");
+                println!("Introduce un número para iniciar la conversión:");
+
+                let mut mass = String::new();
+
+                io::stdin()
+                    .read_line(&mut mass)
+                    .expect("Error al leer la línea");
+
+                let mass: f32 = mass.trim().parse().expect("Debe ser un número");
+
+                println!("Introdujiste: {mass} gramos");
+                println!("{} gramos equivale a {} kilogramos",mass, mass::g_to_kg(mass));
+                println!("{} gramos equivale a {} centigramos",mass, mass::g_to_cg(mass));
+                println!("{} gramos equivale a {} miligramos",mass, mass::g_to_mg(mass));
+                println!("{} gramos equivale a {} decigramos",mass, mass::g_to_dg(mass));
+                println!("{} gramos equivale a {} microgramos",mass, mass::g_to_ug(mass));
+                println!("{} gramos equivale a {} nanogramos",mass, mass::g_to_ng(mass));
 
                 break;
-        }
-        2 => {
-            // Sección para submúltiplos de longitud
-            println!("Seleccionaste longitud");
-            println!("Indroduce un número para iniciar la conversión");
+            }
+            4 => {
+                println!("Seleccionaste corriente eléctrica"); 
+                println!("Introduce un número para la conversión:");
 
-            let mut long = String::new();
+                let mut e = String::new();
 
-            io::stdin()
-                .read_line(&mut long)
-                .expect("Error al leer la línea");
+                io::stdin().read_line(&mut e).expect("Error al leer la línea");
 
-            let long: f32 = long.trim().parse().expect("Debe ser un número");
+                let _e: f32 = e.trim().parse().expect("Debe ser un número");
 
-            println!("Introdujiste: {long} metros");
-            println!("{} metros equivale a {} kilómetros", long, longitud::m_to_km(long));
-            println!("{} metros equivale a {} centímetros", long, longitud::m_to_cm(long));
-            println!("{} metros equivale a {} milímetros", long, longitud::m_to_mm(long));
-            println!("{} metros equivale a {} decímetros", long, longitud::m_to_dm(long));
-            println!("{} metros equivale a {} micrometros", long, longitud::m_to_um(long));
-            println!("{} metros equivale a {} nanometros", long, longitud::m_to_nm(long));
-            
-            break;
-        }
-        3 => {
-            // Sección para submúltiplos de masa
-            println!("Seleccionaste masa");
-            println!("Introduce un número para iniciar la conversión:");
+                println!("Introdujiste: {e} amperes");
+                println!("{} amperes equivale a {} miliamperes", _e, ampere::a_to_ma(_e));
+                println!("{} amperes equivale a {} microamperes", _e, ampere::a_to_ua(_e));
+                println!("{} amperes equivale a {} nanoamperes", _e, ampere::a_to_na(_e));
 
-            let mut mass = String::new();
-
-            io::stdin()
-                .read_line(&mut mass)
-                .expect("Error al leer la línea");
-
-            let mass: f32 = mass.trim().parse().expect("Debe ser un número");
-
-            println!("Introdujiste: {mass} gramos");
-            println!("{} gramos equivale a {} kilogramos",mass, mass::g_to_kg(mass));
-            println!("{} gramos equivale a {} centigramos",mass, mass::g_to_cg(mass));
-            println!("{} gramos equivale a {} miligramos",mass, mass::g_to_mg(mass));
-            println!("{} gramos equivale a {} decigramos",mass, mass::g_to_dg(mass));
-            println!("{} gramos equivale a {} microgramos",mass, mass::g_to_ug(mass));
-            println!("{} gramos equivale a {} nanogramos",mass, mass::g_to_ng(mass));
-
-            break;
-        }
-        4 => {
-            println!("Seleccionaste corriente eléctrica"); 
-            println!("Introduce un número para la conversión:");
-
-            let mut e = String::new();
-
-            io::stdin().read_line(&mut e).expect("Error al leer la línea");
-
-            let e: f32 = e.trim().parse().expect("Debe ser un número");
-            let c: f32;
-            let c1: f32;
-            let c2: f32;
-
-            println!("Introdujiste: {e} amperes");
-            println!("{e} amperes equivale a {c} miliamperes", c = e*1_000.0000);
-            println!("{e} amperes equivale a {c1} microamperes", c1 = e*1_000_000.0);
-            println!("{e} amperes equivale a {c2} nanoamperes", c2 = e*1000_000_000.0);
-
-            break;
-        } 
-        _ => {
-            println!("No es una opción válida"); 
-        }
+                break;
+            } 
+            _ => {
+                println!("No es una opción válida"); 
+            }
         }
     }
 }
