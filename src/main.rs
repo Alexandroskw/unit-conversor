@@ -27,6 +27,7 @@ fn main() {
     }
 }
 
+// Función para calcular los submúltiplos de una unidad del S.I.
 fn internacional() {
     println!("Conversor de unidades del Sistema Internacional");
     println!("Este es un conversor de sufijos del Sistema Internacional de Unidades");
@@ -39,6 +40,7 @@ fn internacional() {
             0
             }) {
             1 => {
+                // Sección para submúltiplos de tiempo
                 println!("Seleccionaste tiempo");
                 println!("Introduce un número para iniciar la conversión:");
 
@@ -59,6 +61,7 @@ fn internacional() {
                 break;
         }
         2 => {
+            // Sección para submúltiplos de longitud
             println!("Seleccionaste longitud");
             println!("Indroduce un número para iniciar la conversión");
 
@@ -81,6 +84,7 @@ fn internacional() {
             break;
         }
         3 => {
+            // Sección para submúltiplos de masa
             println!("Seleccionaste masa");
             println!("Introduce un número para iniciar la conversión:");
 
@@ -136,6 +140,7 @@ fn internacional() {
     }
 }
 
+// Menú del conversor de unidades
 fn conversor() {
     println!("Conversor de unidades");
     println!("Este es un conversor de unidades.\nSelecciona el sistema en el que quieras hacer la conversión:");
