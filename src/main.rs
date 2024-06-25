@@ -71,8 +71,14 @@ fn internacional() {
             let long: f32 = long.trim().parse().expect("Debe ser un número");
 
             println!("Introdujiste: {long} metros");
-            println!("{} metros equivale a {}", long, longitud::m_to_km(long));
+            println!("{} metros equivale a {} kilómetros", long, longitud::m_to_km(long));
+            println!("{} metros equivale a {} centímetros", long, longitud::m_to_cm(long));
+            println!("{} metros equivale a {} milímetros", long, longitud::m_to_mm(long));
+            println!("{} metros equivale a {} decímetros", long, longitud::m_to_dm(long));
+            println!("{} metros equivale a {} micrometros", long, longitud::m_to_um(long));
+            println!("{} metros equivale a {} nanometros", long, longitud::m_to_nm(long));
             
+            break;
         }
         3 => {
             println!("Seleccionaste masa");
