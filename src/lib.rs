@@ -1,3 +1,4 @@
+/*-----------------Funciones para hacer las conversiones------------------*/
 pub mod length {
     pub fn meter_to_feet(meter: f32) -> f32 {
         meter * 3.28084
@@ -36,6 +37,7 @@ pub mod temp {
     }
 }
 
+/*-----------------Funciones para calcular los submúltiplos------------------*/
 pub mod tiempo {
     pub fn seg_to_min(s: f32) -> f32 {
         s / 60.0
