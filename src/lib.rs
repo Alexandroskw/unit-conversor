@@ -111,3 +111,17 @@ pub mod mass {
         g * 1000_000_000.0
     }
 }
+
+pub mod ampere {
+    pub fn a_to_ma(a: f32) -> f32{
+        a * 1_000.0
+    }
+
+    pub fn a_to_ua(a: f32) -> f32 {
+        a * 1_000_000.0
+    }
+
+    pub fn a_to_na(a: f32) -> f32 {
+        a * 1_000_000_000.0
+    }
+} 
