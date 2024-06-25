@@ -136,32 +136,35 @@ fn conversor() {
     println!("Este es un conversor de unidades.\nSelecciona el sistema en el que quieras hacer la conversión:");
     println!("1: Sistema Internacional a Imperial\n2: Sistema Imperial a Internacional");
 
-    let mut o = String::new();
-    io::stdin().read_line(&mut o).expect("Introduce un número");
-    let o = o.trim().parse().expect("Error al leer la línea"); 
+    match read_in().unwrap_or_else(|_| { 
+            println!("Introduce una opción");
+            0
+       }) {
+            1 => {
+                println!("Seleccionaste la conversión del Sistema Internacional al Imperial");
+                println!("Selecciona una opción:");
+                println!("1. Convertir de metros a pies\n2. Convertir de pies a metros");
+                println!("3. Convertir de kilos a libras\n4. Convertir de libras a kilos");
+                println!("5. Convertir de Celsius a Farenheit\n6. Convertir de Farenheit a Celsius");
+                println!("7. Convertir de Celsius a Kelvin\n8. Convertir de Kelvin a Celsius");
+                 
+                let s = match read_in() {
+                    Ok(valor) => valor,
+                    Err(_err) => {
+                        println!("Error al leer la línea");
+                        return
+                    }
+                };
 
-    match o {
-        1 => {
-            println!("Seleccionaste la conversión del Sistema Internacional al Imperial");
-            println!("Selecciona una opción:");
-            println!("1. Convertir de metros a pies\n2. Convertir de pies a metros");
-            println!("3. Convertir de kilos a libras\n4. Convertir de libras a kilos");
-            println!("5. Convertir de Celsius a Farenheit\n6. Convertir de Farenheit a Celsius");
-            println!("7. Convertir de Celsius a Kelvin\n8. Convertir de Kelvin a Celsius");
-
-            let mut s = String::new();
-            io::stdin().read_line(&mut s).expect("Introduce un número");
-            let s = s.trim().parse::<u32>().expect("Error al leer la línea"); 
-
-            conversions(s);
+               conversions(s);
+            }
+            2 => {
+                println!("Has elegido la segunda opción");
+            }
+            _ => {
+                println!("Error");
+            }
         }
-        2 => {
-            println!("Has elegido la segunda opción");
-        }
-        _ => {
-            println!("Error");
-        }
-    }
 }
 
 // Función para convertir del S.I. al Imperial y viceversa
@@ -254,6 +257,7 @@ fn conversions(selection: u32) {
 }
 
 // Función para leer la entrada del usuario
+// 'u32' para abarcar la mayor cantidad de números posibles, flotantes o enteros
 fn read_in() -> Result<u32, std::io::Error> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
