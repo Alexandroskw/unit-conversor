@@ -143,10 +143,10 @@ fn conversor() {
             1 => {
                 println!("Seleccionaste la conversión del Sistema Internacional al Imperial");
                 println!("Selecciona una opción:");
-                println!("1. Convertir de metros a pies\n2. Convertir de pies a metros");
-                println!("3. Convertir de kilos a libras\n4. Convertir de libras a kilos");
-                println!("5. Convertir de Celsius a Farenheit\n6. Convertir de Farenheit a Celsius");
-                println!("7. Convertir de Celsius a Kelvin\n8. Convertir de Kelvin a Celsius");
+                println!("1. Convertir de metros a pies");
+                println!("2. Convertir de kilos a libras");
+                println!("3. Convertir de Celsius a Farenheit");
+                println!("4. Convertir de Celsius a Kelvin");
                  
                 let s = match read_in() {
                     Ok(valor) => valor,
@@ -159,7 +159,7 @@ fn conversor() {
                conversions(s);
             }
             2 => {
-                println!("Has elegido la segunda opción");
+                println!("Has elegido la segunda opción"); 
             }
             _ => {
                 println!("Error");
