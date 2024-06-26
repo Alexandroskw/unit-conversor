@@ -134,42 +134,50 @@ fn internacional() {
 fn conversor() {
     println!("Conversor de unidades");
     println!("Este es un conversor de unidades.\nSelecciona el sistema en el que quieras hacer la conversión:");
-    println!("1: Sistema Internacional a Imperial\n2: Sistema Imperial a Internacional");
+    println!("1: Sistema Internacional a Imperial\n2: Sistema Imperial a Internacional"); 
 
-    match read_in().unwrap_or_else(|_| { 
-            println!("Introduce una opción");
-            0
-       }) {
-            1 => {
-                println!("Seleccionaste la conversión del Sistema Internacional al Imperial");
-                println!("Selecciona una opción:");
-                println!("1. Convertir de metros a pies");
-                println!("2. Convertir de kilos a libras");
-                println!("3. Convertir de Celsius a Farenheit");
-                println!("4. Convertir de Celsius a Kelvin");
-                 
-                let s = match read_in() {
-                    Ok(valor) => valor,
-                    Err(_err) => {
-                        println!("Error al leer la línea");
-                        return
-                    }
-                };
-
-               conversions(s);
-            }
-            2 => {
-                println!("Has elegido la segunda opción"); 
-            }
-            _ => {
-                println!("Error");
-            }
+    let sel = match read_in() {
+        Ok(valor) => valor,
+        Err(_err) => {
+            println!("Error al leer la línea");
+            return
         }
+    };
+    if sel == 1 {
+        println!("Seleccionaste el conversor del Sistema Internacional al Imperial");
+        println!("¿Qué conversión quieres hacer?");
+        println!("1. Convertir de metros a pies");
+        conversions(sel);
+    }
+    else if sel == 2 {
+        println!("Puedes leer esta línea porque ingresaste el 2");
+    }
+    else {
+        println!("No existe");
+    } 
 }
 
 // Función para convertir del S.I. al Imperial y viceversa
+#[allow(warnings)]
 fn conversions(selection: u32) {
-    match selection {
+    match read_in().unwrap_or_else(|_| {
+        println!("Error al leer la línea");
+        0
+    }) {
+        1 => {
+            println!("Conversor de metros [m] a pies [ft]");
+            println!("Introduce el valor a convertir:");
+            
+            let mut m = String::new();
+            io::stdin().read_line(&mut m).expect("Introduce un número");
+            let m = m.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} metros equivale a {} pies", m, length::meter_to_feet(m));
+        }
+        _ => {
+            println!("Error");
+        }
+    }
+    /*match selection {
         1 => {
             println!("Seleccionaste convertir de metros a pies");
             println!("Ingresa los metros a convertir:");
@@ -253,7 +261,7 @@ fn conversions(selection: u32) {
         _ => {
             println!("No es una opción válida");
         }
-    }
+    }*/
 }
 
 // Función para leer la entrada del usuario
