@@ -1,4 +1,6 @@
 /*-----------------Funciones para hacer las conversiones------------------*/
+
+/*-----------------Funciones para longitud------------------*/
 pub mod length {
     pub fn meter_to_feet(meter: f32) -> f32 {
         meter * 3.28084
@@ -9,6 +11,7 @@ pub mod length {
     }
 }
 
+/*-----------------Funciones para peso------------------*/
 pub mod weight {
     pub fn kg_to_pound(kg: f32) -> f32 {
         kg * 2.20462
@@ -19,6 +22,7 @@ pub mod weight {
     }
 }
 
+/*-----------------Funciones para temperatura------------------*/
 pub mod temp {
     pub fn c_to_f(c: f32) -> f32 {
         c * 1.8 + 32.0
