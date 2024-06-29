@@ -147,6 +147,8 @@ fn conversor() {
         println!("Seleccionaste el conversor del Sistema Internacional al Imperial");
         println!("¿Qué conversión quieres hacer?");
         println!("1. Convertir de metros a pies");
+        println!("2. Convertir de kilos a libras");
+        println!("3. Convertir de Celsius a Farenheit");
         conversions(sel);
     }
     else if sel == 2 {
@@ -172,6 +174,24 @@ fn conversions(selection: u32) {
             io::stdin().read_line(&mut m).expect("Introduce un número");
             let m = m.trim().parse::<f32>().expect("Error al leer la entrada");
             println!("{} metros equivale a {} pies", m, length::meter_to_feet(m));
+        } 
+        2 => {
+            println!("Conversor de kilos [kg] a libras [lb]");
+            println!("Introduce el valor a convertir:");
+            
+            let mut kg = String::new();
+            io::stdin().read_line(&mut kg).expect("Introduce un número");
+            let kg = kg.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} kilos equivale a {} libras", kg, weight::kg_to_pound(kg));
+        }
+        3 => {
+            println!("Conversor de Celsius [°C] a Farenheit [°F]");
+            println!("Introduce el valor a convertir:");
+
+            let mut temp = String::new();
+            io::stdin().read_line(&mut temp).expect("Introduce un número");
+            let t = temp.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} °C equivale a {} °F", t, temp::c_to_f(t));
         }
         _ => {
             println!("Error");
