@@ -1,29 +1,30 @@
-use std::io;
+use std::io::{self, Write};
 use conversor::*;
 
 fn main() {
-    println!("Bienvenido al conversor de unidades");
-    println!("¿Qué deseas hacer?:");
-    println!("1. Para hacer una conversión de  múltiplos en el S.I.\n2. Para hacer una conversión en cualquiera de ambos sistemas (Internacional, Imperial):");
-
     loop {
+        println!("Bienvenido al conversor de unidades");
+        println!("¿Qué deseas hacer?:");
+        println!("1. Para hacer una conversión de  múltiplos en el S.I.\n2. Para hacer una conversión en cualquiera de ambos sistemas (Internacional, Imperial):");
+
        match read_in().unwrap_or_else(|_| { 
             println!("Introduce una opción");
             0
        }) {
            1 => {
                internacional();
-               break;
            }
            2 => {
                conversor();
-               break;
            }
            _ => {
                println!("No es una opción válida");
-               break;
            }
        }
+        if !reset_program() {
+            println!("Gracias por usar el conversor");
+            break;
+        }
     }
 }
 
@@ -248,4 +249,21 @@ fn read_in() -> Result<u32, std::io::Error> {
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
     input.trim().parse().map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
+}
+
+// Función para volver a repetir el programa
+fn reset_program() -> bool {
+    loop {
+        println!("¿Deseas hacer otra conversión? (s/n):");
+        io::stdout().flush().unwrap();
+
+        let mut r = String::new();
+        io::stdin().read_line(&mut r).expect("Error al leer la línea");
+
+        match r.trim().to_lowercase().as_str() {
+            "s" | "si" => return true,
+            "n" | "no" => return false,
+            _ => println!("Por favor responde 'si' o 'no'"),
+        }
+    }
 }
