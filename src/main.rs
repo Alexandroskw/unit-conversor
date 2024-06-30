@@ -29,6 +29,7 @@ fn main() {
 }
 
 // Función para calcular los submúltiplos de una unidad del S.I.
+#[allow(warnings)]
 fn internacional() {
     println!("Conversor de unidades del Sistema Internacional");
     println!("Este es un conversor de sufijos del Sistema Internacional de Unidades");
@@ -46,6 +47,12 @@ fn internacional() {
                     println!("Introduce un número para iniciar la conversión:");
 
                     let mut time = String::new();
+                    let sub:[(&str, fn(f32) -> f32); 4] = [
+                        ("minutos", tiempo::seg_to_min),
+                        ("horas", tiempo::seg_to_hr),
+                        ("milisegundos", tiempo::seg_to_ms),
+                        ("microsegundos", tiempo::seg_to_us),
+                    ];
 
                     io::stdin()
                         .read_line(&mut time)
@@ -54,10 +61,12 @@ fn internacional() {
                     let time: f32 = time.trim().parse().expect("Debe ser un número");
 
                     println!("Introdujiste: {time}");
-                    println!("{} segundos son {} minutos", time, tiempo::seg_to_min(time));
-                    println!("{} segundos son {} horas", time, tiempo::seg_to_hr(time));
-                    println!("{} segundos son {} milisegundos", time, tiempo::seg_to_ms(time));
-                    println!("{} segundos son {} microsegundos", time, tiempo::seg_to_us(time));
+                    
+                    for &(unidad, func) in sub.iter() {   
+                        let resultado = func(time);
+
+                        println!("{} segundos son {} {}", time, resultado, unidad);
+                    }
 
                     break;
                 }
