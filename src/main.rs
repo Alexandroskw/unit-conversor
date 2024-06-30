@@ -145,17 +145,24 @@ fn conversor() {
     };
     if sel == 1 {
         println!("Seleccionaste el conversor del Sistema Internacional al Imperial");
-        println!("¿Qué conversión quieres hacer?");
+        println!("¿Qué conversión quieres hacer?:");
         println!("1. Convertir de metros a pies");
         println!("2. Convertir de kilos a libras");
         println!("3. Convertir de Celsius a Farenheit");
+        println!("4. Convertir de Celsius a Kelvin");
+        println!("5. Convertir de Kelvin a Celsius");
         conversions(sel);
     }
     else if sel == 2 {
-        println!("Puedes leer esta línea porque ingresaste el 2");
+        println!("Seleccionaste el conversor del Sistema Imperial al Internacional");
+        println!("¿Qué conversión quieres hacer?:");
+        println!("6. Convertir de pies a metros");
+        println!("7. Convertir de libras a kilos");
+        println!("8. Convertir de Farenheit a Celsius");
+        conversions(sel);
     }
     else {
-        println!("No existe");
+        println!("Opción no válida.");
     } 
 }
 
@@ -193,95 +200,46 @@ fn conversions(selection: u32) {
             let t = temp.trim().parse::<f32>().expect("Error al leer la entrada");
             println!("{} °C equivale a {} °F", t, temp::c_to_f(t));
         }
-        _ => {
-            println!("Error");
-        }
-    }
-    /*match selection {
-        1 => {
-            println!("Seleccionaste convertir de metros a pies");
-            println!("Ingresa los metros a convertir:");
-            let mut m = String::new();
-            io::stdin().read_line(&mut m).expect("Introduce un número");
-            let m = m.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {m} metros");
-
-            println!("{} metros son {} pies", m, length::meter_to_feet(m));
-        }
-        2 => {
-            println!("Seleccionaste convertir de pies a metros");
-            println!("Ingresa los pies a convertir:");
-            let mut ft = String::new(); 
-            io::stdin().read_line(&mut ft).expect("Introduce un número");
-            let ft = ft.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {ft} pies");
-
-            println!("{} pies son {} metros", ft, length::feet_to_meter(ft));
-        }
-        3 => {
-            println!("Seleccionaste convertir de kilos a libras");
-            println!("Ingresa los kilos a convertir:");
-            let mut kg = String::new(); 
-            io::stdin().read_line(&mut kg).expect("Introduce un número");
-            let kg = kg.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {kg} kilogramos");
-
-            println!("{} kilogramos son {} libras", kg, weight::kg_to_pound(kg));
-        }
         4 => {
-            println!("Seleccionaste convertir de libras a kilos");
-            println!("Ingresa las libras a convertir:");
-            let mut lb = String::new(); 
-            io::stdin().read_line(&mut lb).expect("Introduce un número");
-            let lb = lb.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {lb} kilogramos");
+            println!("Conversor de Celsius [°C] a Kelvin [K]");
+            println!("Introduce un valor a converir:");
 
-            println!("{} libras son {} kilogramos", lb, weight::pound_to_kg(lb));
+            let mut temp = String::new();
+            io::stdin().read_line(&mut temp).expect("Introduce un número");
+            let t = temp.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} °C equivale a {} K", t, temp::c_to_k(t));
         }
         5 => {
-            println!("Seleccionaste convertir de grados celsius a farenheit");
-            println!("Ingresa los grados celsius a convertir:");
-            let mut c = String::new(); 
-            io::stdin().read_line(&mut c).expect("Introduce un número");
-            let c = c.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {c} grados celsius");
+            println!("Conversor de Kelvin [K] a Celsius [°C]");
+            println!("Introduce un valor a converir:");
 
-            println!("{} celsius son {} farenheit", c, temp::c_to_f(c));
+            let mut temp = String::new();
+            io::stdin().read_line(&mut temp).expect("Introduce un número");
+            let t = temp.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} °C equivale a {} K", t, temp::k_to_c(t));
         }
         6 => {
-            println!("Seleccionaste convertir de grados farenheit a celsius");
-            println!("Ingresa los grados farenheit a convertir:");
-            let mut f = String::new(); 
-            io::stdin().read_line(&mut f).expect("Introduce un número");
-            let f = f.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {f} grados farenheit");
+            println!("Conversor de pies [ft] a metros [m]");
+            println!("Introduce un valor a converir:");
 
-            println!("{} farenheit son {} celsius", f, temp::f_to_c(f));
+            let mut ft = String::new();
+            io::stdin().read_line(&mut ft).expect("Introduce un número");
+            let f = ft.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} pies equivale a {} metros", f, length::feet_to_meter(f));
         }
         7 => {
-            println!("Seleccionaste convertir de grados celsius a kelvin");
-            println!("Ingresa los grados celsius a convertir:");
-            let mut c = String::new(); 
-            io::stdin().read_line(&mut c).expect("Introduce un número");
-            let c = c.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {c} grados celsius");
+            println!("Conversor de libras [lb] a kilos [m]");
+            println!("Introduce un valor a converir:");
 
-            println!("{} celsius son {} kelvin", c, temp::c_to_k(c));
-        }
-        8 => {
-            println!("Seleccionaste convertir de grados kelvin a celsius");
-            println!("Ingresa los grados kelvin a convertir:");
-            let mut k = String::new(); 
-            io::stdin().read_line(&mut k).expect("Introduce un número");
-            let k = k.trim().parse::<f32>().expect("Error al leer la línea");
-            println!("Has puesto {k} grados celsius");
-
-            println!("{} kelvin son {} celsius", k, temp::k_to_c(k));
+            let mut lb = String::new();
+            io::stdin().read_line(&mut lb).expect("Introduce un número");
+            let l = lb.trim().parse::<f32>().expect("Error al leer la entrada");
+            println!("{} libras equivale a {} kilos", l, length::feet_to_meter(l));
         }
         _ => {
-            println!("No es una opción válida");
+            println!("Opción no válida");
         }
-    }*/
+    }
 }
 
 // Función para leer la entrada del usuario
