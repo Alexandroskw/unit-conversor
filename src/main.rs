@@ -54,17 +54,13 @@ fn internacional() {
                         ("microsegundos", tiempo::seg_to_us),
                     ];
 
-                    io::stdin()
-                        .read_line(&mut time)
-                        .expect("Error al leer la línea");
+                    io::stdin().read_line(&mut time).expect("Error al leer la línea");
 
                     let time: f32 = time.trim().parse().expect("Debe ser un número");
 
-                    println!("Introdujiste: {time}");
-                    
+                    println!("Introdujiste: {time}");                    
                     for &(unidad, func) in sub.iter() {   
                         let resultado = func(time);
-
                         println!("{} segundos son {} {}", time, resultado, unidad);
                     }
 
@@ -76,21 +72,25 @@ fn internacional() {
                 println!("Indroduce un número para iniciar la conversión");
 
                 let mut long = String::new();
+                let sub: [(&str, fn(f32) -> f32); 6] = [
+                    ("kilómetros", longitud::m_to_km),
+                    ("centímetros", longitud::m_to_cm),
+                    ("milímetros", longitud::m_to_mm),
+                    ("decímetros", longitud::m_to_dm),
+                    ("micrómetros", longitud::m_to_um),
+                    ("nanómetros", longitud::m_to_nm),
+                ];
 
-                io::stdin()
-                    .read_line(&mut long)
-                    .expect("Error al leer la línea");
+                io::stdin().read_line(&mut long).expect("Error al leer la línea");
 
                 let long: f32 = long.trim().parse().expect("Debe ser un número");
 
                 println!("Introdujiste: {long} metros");
-                println!("{} metros equivale a {} kilómetros", long, longitud::m_to_km(long));
-                println!("{} metros equivale a {} centímetros", long, longitud::m_to_cm(long));
-                println!("{} metros equivale a {} milímetros", long, longitud::m_to_mm(long));
-                println!("{} metros equivale a {} decímetros", long, longitud::m_to_dm(long));
-                println!("{} metros equivale a {} micrometros", long, longitud::m_to_um(long));
-                println!("{} metros equivale a {} nanometros", long, longitud::m_to_nm(long));
-                
+                for &(unidad, func) in sub.iter() {
+                    let resultado = func(long);
+                    println!("{} metros equivalen a {} {}", long, resultado, unidad);
+                }
+               
                 break;
             }
             3 => {
@@ -99,22 +99,25 @@ fn internacional() {
                 println!("Introduce un número para iniciar la conversión:");
 
                 let mut mass = String::new();
+                let sub: [(&str, fn(f32) -> f32); 6] = [
+                    ("kilogramos", mass::g_to_kg),
+                    ("centigramos", mass::g_to_cg),
+                    ("miligramos", mass::g_to_mg),
+                    ("decigramos", mass::g_to_dg),
+                    ("microgramos", mass::g_to_ug),
+                    ("nanogramos", mass::g_to_ng),
+                ];
 
-                io::stdin()
-                    .read_line(&mut mass)
-                    .expect("Error al leer la línea");
+                io::stdin().read_line(&mut mass).expect("Error al leer la línea");
 
                 let mass: f32 = mass.trim().parse().expect("Debe ser un número");
-
                 println!("Introdujiste: {mass} gramos");
-                println!("{} gramos equivale a {} kilogramos",mass, mass::g_to_kg(mass));
-                println!("{} gramos equivale a {} centigramos",mass, mass::g_to_cg(mass));
-                println!("{} gramos equivale a {} miligramos",mass, mass::g_to_mg(mass));
-                println!("{} gramos equivale a {} decigramos",mass, mass::g_to_dg(mass));
-                println!("{} gramos equivale a {} microgramos",mass, mass::g_to_ug(mass));
-                println!("{} gramos equivale a {} nanogramos",mass, mass::g_to_ng(mass));
+                for &(unidad, func) in sub.iter() {
+                    let resultado = func(mass);
+                    println!("{} gramos equivalen a {} {}", mass, resultado, unidad);
+                }
 
-                break;
+               break;
             }
             4 => {
                 println!("Seleccionaste corriente eléctrica"); 
