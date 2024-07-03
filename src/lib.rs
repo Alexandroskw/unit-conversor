@@ -1,3 +1,4 @@
+pub mod utils;
 /*-----------------Funciones para hacer las conversiones------------------*/
 
 /*-----------------Funciones para longitud------------------*/
