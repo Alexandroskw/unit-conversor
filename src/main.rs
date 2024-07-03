@@ -1,5 +1,8 @@
-use std::io::{self, Write};
+mod utils;
+
+use std::io;
 use conversor::*;
+use utils::{read_in, reset_program};
 
 fn main() {
     loop {
@@ -124,16 +127,21 @@ fn internacional() {
                 println!("Introduce un número para la conversión:");
 
                 let mut e = String::new();
+                let sub: [(&str, fn(f32) -> f32); 3] = [
+                    ("miliamperes", ampere::a_to_ma),
+                    ("microamperes", ampere::a_to_ua),
+                    ("nanoamperes", ampere::a_to_na),
+                ];
 
                 io::stdin().read_line(&mut e).expect("Error al leer la línea");
 
                 let _e: f32 = e.trim().parse().expect("Debe ser un número");
-
                 println!("Introdujiste: {e} amperes");
-                println!("{} amperes equivale a {} miliamperes", _e, ampere::a_to_ma(_e));
-                println!("{} amperes equivale a {} microamperes", _e, ampere::a_to_ua(_e));
-                println!("{} amperes equivale a {} nanoamperes", _e, ampere::a_to_na(_e));
 
+                for &(unidad, func) in sub.iter() {
+                    let resultado = func(_e);
+                    println!("{} amperes equivalen a {} {}", _e, resultado, unidad);
+                }
                 break;
             } 
             _ => {
@@ -251,31 +259,6 @@ fn conversions(selection: u32) {
         }
         _ => {
             println!("Opción no válida");
-        }
-    }
-}
-
-// Función para leer la entrada del usuario
-// 'u32' para abarcar la mayor cantidad de números posibles, flotantes o enteros
-fn read_in() -> Result<u32, std::io::Error> {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input)?;
-    input.trim().parse().map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
-}
-
-// Función para volver a repetir el programa
-fn reset_program() -> bool {
-    loop {
-        println!("¿Deseas hacer otra conversión? (s/n):");
-        io::stdout().flush().unwrap();
-
-        let mut r = String::new();
-        io::stdin().read_line(&mut r).expect("Error al leer la línea");
-
-        match r.trim().to_lowercase().as_str() {
-            "s" | "si" => return true,
-            "n" | "no" => return false,
-            _ => println!("Por favor responde 'si' o 'no'"),
         }
     }
 }
