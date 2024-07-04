@@ -1,7 +1,10 @@
 mod utils;
+mod submult;
+mod conv;
 
 use std::io;
-use conversor::*;
+use conversor::submult::*;
+use conversor::conv::*;
 use utils::{read_in, reset_program};
 
 fn main() {
@@ -50,6 +53,9 @@ fn internacional() {
                     println!("Introduce un número para iniciar la conversión:");
 
                     let mut time = String::new();
+                // Uso de tuplas para la simplicidad del programa. Al crear una tupla se debe
+                // de indicar el tipo de cada uno de los elementos (string y una función de que
+                // regresa un 'f32' en este caso)
                     let sub:[(&str, fn(f32) -> f32); 4] = [
                         ("minutos", tiempo::seg_to_min),
                         ("horas", tiempo::seg_to_hr),
