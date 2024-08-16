@@ -1,18 +1,20 @@
-// #[allow(dead_code)]
-pub fn seg_to_min(s: f32) -> f32 {
-    s / 60.0
-}
+#[allow(dead_code)]
+pub mod tiempo {
+    pub fn seg_to_min(s: f32) -> f32 {
+        s / 60.0
+    }
 
-pub fn seg_to_hr(s: f32) -> f32 {
-    s / 3600.0
-}
+    pub fn seg_to_hr(s: f32) -> f32 {
+        s / 3600.0
+    }
 
-pub fn seg_to_ms(s: f32) -> f32 {
-    s * 1000.0
-}
+    pub fn seg_to_ms(s: f32) -> f32 {
+        s * 1000.0
+    }
 
-pub fn seg_to_us(s: f32) -> f32 {
-    s * 1_000_000.0
+    pub fn seg_to_us(s: f32) -> f32 {
+        s * 1_000_000.0
+    }
 }
 
 #[allow(dead_code)]
@@ -40,7 +42,7 @@ pub mod longitud {
     }
 
     pub fn m_to_nm(m: f32) -> f32 {
-        m * 1000_000_000.0
+        m * 1_000_000_000.0
     }
 }
 
@@ -69,13 +71,13 @@ pub mod mass {
     }
 
     pub fn g_to_ng(g: f32) -> f32 {
-        g * 1000_000_000.0
+        g * 1_000_000_000.0
     }
 }
 
 #[allow(dead_code)]
 pub mod ampere {
-    pub fn a_to_ma(a: f32) -> f32{
+    pub fn a_to_ma(a: f32) -> f32 {
         a * 1_000.0
     }
 
@@ -86,4 +88,4 @@ pub mod ampere {
     pub fn a_to_na(a: f32) -> f32 {
         a * 1_000_000_000.0
     }
-} 
+}
