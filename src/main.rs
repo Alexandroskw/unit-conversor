@@ -4,8 +4,8 @@ mod si;
 mod submult;
 mod utils;
 
-use mults::conversor;
-use si::internacional;
+use mults::internacional;
+use si::conversor;
 use utils::{read_in, reset_program};
 
 #[allow(warnings)]
