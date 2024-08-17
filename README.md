@@ -10,9 +10,13 @@ Revisa la [página oficial del lenguaje](https://www.rust-lang.org/tools/install
 Para hacer uso de este conversor, solo debes entrar a la carpeta del proyecto:
 `$ cd ~/unit-conversor`
 Posteriormente compilarlo con **cargo build** o **cargo run** para directamente compilarlo y ejecutarlo:
+
 `$ cargo build`
+
 o
+
 `$ cargo run`
+
 
 ## Desarrollo
 Aun se puede hacer crecer este repositorio ya que solo tiene las unidades más básicas que se utilizan (centímetros, metros, Célsius, etc.). Si quieres contribuir puedes hacerlo.
